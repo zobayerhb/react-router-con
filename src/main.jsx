@@ -7,15 +7,16 @@ import Home from "./components/Home/Home";
 import About from "./components/About/About";
 import Contact from "./components/Contact/Contact";
 import Users from "./components/Users/Users";
-import NotFound from "./components/NotFound/NotFound";
 import UserDetails from "./components/UserDetails/UserDetails";
 import Posts from "./components/Posts/Posts";
 import PostDetails from "./components/PostDetails/PostDetails";
+import NotFound from "./components/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/about",
@@ -46,11 +47,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         element: <PostDetails></PostDetails>,
-      },
-      {
-        path: "/error",
-        element: <NotFound></NotFound>,
-      },
+      }
     ],
   },
 ]);
