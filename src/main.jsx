@@ -9,6 +9,8 @@ import Contact from "./components/Contact/Contact";
 import Users from "./components/Users/Users";
 import NotFound from "./components/NotFound/NotFound";
 import UserDetails from "./components/UserDetails/UserDetails";
+import Posts from "./components/Posts/Posts";
+import PostDetails from "./components/PostDetails/PostDetails";
 
 const router = createBrowserRouter([
   {
@@ -16,29 +18,40 @@ const router = createBrowserRouter([
     element: <Home></Home>,
     children: [
       {
-        path: '/about',
-        element: <About></About>
+        path: "/about",
+        element: <About></About>,
       },
       {
-        path: '/contact',
-        element: <Contact></Contact>
+        path: "/contact",
+        element: <Contact></Contact>,
       },
       {
-        path: '/users',
-        loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
-        element: <Users></Users>
+        path: "/users",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/users"),
+        element: <Users></Users>,
       },
       {
-        path: '/user/:userId',
-        loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
-        element: <UserDetails></UserDetails>
+        path: "/user/:userId",
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        element: <UserDetails></UserDetails>,
       },
       {
-        path: '/error',
-        element: <NotFound></NotFound>
-      }
-
-    ]
+        path: "/posts",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/posts"),
+        element: <Posts></Posts>,
+      },
+      {
+        path: "/post/:postId",
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        element: <PostDetails></PostDetails>,
+      },
+      {
+        path: "/error",
+        element: <NotFound></NotFound>,
+      },
+    ],
   },
 ]);
 

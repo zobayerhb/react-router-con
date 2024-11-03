@@ -1,0 +1,7 @@
+.button-grow{
+    display: flex;
+    flex-direction: column;
+}
+.grow-flex-button{
+    flex-grow: 1;
+}
